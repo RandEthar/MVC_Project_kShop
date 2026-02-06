@@ -1,0 +1,67 @@
+﻿@using kASHOP.Models.ViewModels
+@model List<ProductViewModel>
+
+<div class="card mb-4">
+    <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning mb-0">
+                No categories found.
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered" role="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px" scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Actions</th> <!-- عمود جديد للزر -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr class="align-middle">
+                            <td>@product.Id</td>
+                            <td>@product.Name</td>
+                            <td>
+                                <img src="@product.Image"
+                                     style="width: 60px; height: 60px; object-fit: cover;"
+                                     class="rounded" />
+                            </td>
+                            @* <td>@product.Category.Name</td> *@
+                            <td>
+                                <a asp-controller="Products"
+                                   asp-action="delete"
+                                   asp-route-id=@product.Id
+                                   class="btn btn-danger">Delete</a>
+
+                                <a asp-controller="Products"
+                                   asp-action="edit"
+                                   asp-route-id="@product.Id"
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+        <ul class="pagination pagination-sm m-0 float-end">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+</div>

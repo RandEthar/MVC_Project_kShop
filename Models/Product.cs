@@ -12,7 +12,7 @@ namespace kASHOP.Models
         public string Name { get; set; }
         public string? Image { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
+        public Category Category { get; set; }
         [Range(0, 10000)]
         public double Price { get; set; }
         public double Rate { get; set; }
