@@ -1,0 +1,61 @@
+﻿@model List<Category>
+
+<div class="card mb-4">
+    <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning mb-0">
+                No categories found.
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered" role="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10px" scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Actions</th> <!-- عمود جديد للزر -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cat in Model)
+                    {
+                        <tr class="align-middle">
+                            <td>@cat.Id</td>
+                            <td>@cat.Name</td>
+                            <td>
+                                <a
+                                    asp-controller="categories" 
+                                    asp-action="delete" 
+                                    
+                                    asp-route-id=@cat.Id 
+                                    class="btn btn-danger">Delete</a>
+
+                                <a asp-controller="categories"
+                                   asp-action="edit"
+                                   asp-route-id="@cat.Id"
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil"></i> 
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+        <ul class="pagination pagination-sm m-0 float-end">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+</div>

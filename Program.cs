@@ -27,7 +27,7 @@ namespace kASHOP
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{area=user}/{controller=Home}/{action=Index}/{id?}")
+                pattern: "{area=admin}/{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
