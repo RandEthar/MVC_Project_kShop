@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace kASHOP.Models
 {
@@ -12,6 +13,7 @@ namespace kASHOP.Models
         public string Name { get; set; }
         public string? Image { get; set; }
         public string Description { get; set; }
+        [ValidateNever]
         public Category Category { get; set; }
         [Range(0, 10000)]
         public double Price { get; set; }
