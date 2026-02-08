@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kASHOP.Models
@@ -12,6 +13,9 @@ namespace kASHOP.Models
         [MinLength(5)]
         public string Name { get; set; }
 
-        public List<Product> Products { get; set;} 
+        //تجاهل هاي الخاصية تمامًا أثناء الـ Model Validation
+        [ValidateNever]
+        public List<Product> Products { get; set; }
+
     }
 }
